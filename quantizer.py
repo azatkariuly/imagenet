@@ -71,28 +71,6 @@ def quantizeLSQ(v, s, p, numl, isActivation=False):
         #plt.savefig("/home/faaiz/Documents/2021/trained/lsq")
         #plt.clf()
 
-
-
-
-
-        '''
-        out = out + list(((round_pass(((v/(0.68*torch.std(v)))+0.5)))-0.5).clamp(Qn, Qp).flatten().detach().cpu().numpy())
-
-        ###         histogram           ###
-        hist = np.histogram(out, bins=[-2, -1, 0, 1, 2])
-
-        hist = hist[0] / (hist[0].sum())
-        print(hist)
-        vbar.cuda()
-
-        ###         GRAPH           ###
-        # vbar.cuda()
-        plt.hist(out)
-        plt.draw()
-        plt.pause(0.01)
-        plt.clf()
-        '''
-
     return vhat
 
 
@@ -160,6 +138,7 @@ class Conv2dLSQ(_Conv2dQ):
             x_q = quantizeLSQ(x, self.step_size_a, self.nbits,x.shape[1])
         else:
             x_q = quantizeLSQ(x, self.step_size_a, self.nbits, x.shape[1], isActivation=True)
+            
         w_q = quantizeLSQ(self.weight, self.step_size_w, self.nbits, self.weight.data.numel())
         #print(self.nbits)
         return F.conv2d(x_q, w_q, self.bias, self.stride,

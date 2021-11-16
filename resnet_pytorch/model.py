@@ -45,7 +45,7 @@ class ResNet(nn.Module):
         self.groups = global_params.groups
         self.base_width = global_params.width_per_group
         #self.conv1 = nn.Conv2d(3, self.inplanes, kernel_size=7, stride=2, padding=3,bias=False)
-        self.conv1 = Q.Conv2dLSQ(3, self.inplanes, kernel_size=7, stride=2, padding=3,bias=False,nbits=8)
+        self.conv1 = nn.Conv2d(3, self.inplanes, kernel_size=7, stride=2, padding=3,bias=False)
         self.bn1 = norm_layer(self.inplanes)
         self.relu = nn.ReLU(inplace=True)
         self.maxpool = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
@@ -58,7 +58,7 @@ class ResNet(nn.Module):
                                        dilate=replace_stride_with_dilation[2])
         self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
         #self.fc = nn.Linear(512 * global_params.block.expansion, global_params.num_classes)
-        self.fc = Q.LinearLSQ(512 * global_params.block.expansion, global_params.num_classes,nbits =8)
+        self.fc = nn.Linear(512 * global_params.block.expansion, global_params.num_classes)
 
         for m in self.modules():
             if isinstance(m, nn.Conv2d):
