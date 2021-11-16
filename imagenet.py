@@ -48,7 +48,7 @@ model_names = default_model_names #+ customized_models_names
 parser = argparse.ArgumentParser(description='PyTorch ImageNet Training')
 
 # Datasets
-parser.add_argument('-d', '--data', default='path to dataset', type=str)
+parser.add_argument('-d', '--data', default='/Dataset/ILSVRC2012/', type=str)
 parser.add_argument('-j', '--workers', default=16, type=int, metavar='N',
                     help='number of data loading workers (default: 4)')
 # Optimization options
