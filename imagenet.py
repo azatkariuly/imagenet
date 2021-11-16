@@ -59,7 +59,7 @@ parser.add_argument('--start-epoch', default=0, type=int, metavar='N',
 parser.add_argument('--train-batch', default=256, type=int, metavar='N',
                     help='train batchsize (default: 256)')
 parser.add_argument('--test-batch', default=256, type=int, metavar='N',
-                    help='test batchsize (default: 200)')
+                    help='test batchsize (default: 256)')
 parser.add_argument('--lr', '--learning-rate', default=0.01, type=float,
                     metavar='LR', help='initial learning rate')
 parser.add_argument('--drop', '--dropout', default=0, type=float,
@@ -214,9 +214,9 @@ def main():
 
     if args.evaluate:
         print('\nEvaluation only')
-        print("TEACHER ACC")
-        test_loss, test_acc = test(val_loader, teacher, criterion, start_epoch, use_cuda)
-        print(' Test Loss:  %.8f, Test Acc:  %.2f' % (test_loss, test_acc))
+        #print("TEACHER ACC")
+        #test_loss, test_acc = test(val_loader, teacher, criterion, start_epoch, use_cuda)
+        #print(' Test Loss:  %.8f, Test Acc:  %.2f' % (test_loss, test_acc))
         print("STUDENT ACC")
         test_loss, test_acc = test(val_loader, model, criterion, start_epoch, use_cuda)
         print(' Test Loss:  %.8f, Test Acc:  %.2f' % (test_loss, test_acc))
