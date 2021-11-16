@@ -214,16 +214,22 @@ def main():
 
     if args.evaluate:
         print('\nEvaluation only')
-        #print("TEACHER ACC")
-        #test_loss, test_acc = test(val_loader, teacher, criterion, start_epoch, use_cuda)
-        #print(' Test Loss:  %.8f, Test Acc:  %.2f' % (test_loss, test_acc))
+        print("TEACHER ACC")
+
+        best_acc = checkpoint['best_acc']
+
+        print('sdlfgknsdlkfmglksdf: ', best_acc)
+        test_loss, test_acc = test(val_loader, teacher, criterion, start_epoch, use_cuda)
+        print(' Test Loss:  %.8f, Test Acc:  %.2f' % (test_loss, test_acc))
         print("STUDENT ACC")
         test_loss, test_acc = test(val_loader, model, criterion, start_epoch, use_cuda)
         print(' Test Loss:  %.8f, Test Acc:  %.2f' % (test_loss, test_acc))
+        '''
         for key in model.state_dict():
             if 'conv' in key and 'weight' in key:
                 hist = torch.histc(model.state_dict()[key], bins=4)
                 print(hist*100/hist.sum())
+        '''
         return
 
     # Train and val
