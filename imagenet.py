@@ -49,16 +49,16 @@ parser = argparse.ArgumentParser(description='PyTorch ImageNet Training')
 
 # Datasets
 parser.add_argument('-d', '--data', default='/Dataset/ILSVRC2012/', type=str)
-parser.add_argument('-j', '--workers', default=16, type=int, metavar='N',
+parser.add_argument('-j', '--workers', default=4, type=int, metavar='N',
                     help='number of data loading workers (default: 4)')
 # Optimization options
 parser.add_argument('--epochs', default=90, type=int, metavar='N',
                     help='number of total epochs to run')
 parser.add_argument('--start-epoch', default=0, type=int, metavar='N',
                     help='manual epoch number (useful on restarts)')
-parser.add_argument('--train-batch', default=768, type=int, metavar='N',
+parser.add_argument('--train-batch', default=256, type=int, metavar='N',
                     help='train batchsize (default: 256)')
-parser.add_argument('--test-batch', default=512, type=int, metavar='N',
+parser.add_argument('--test-batch', default=256, type=int, metavar='N',
                     help='test batchsize (default: 200)')
 parser.add_argument('--lr', '--learning-rate', default=0.01, type=float,
                     metavar='LR', help='initial learning rate')
@@ -183,7 +183,7 @@ def main():
     #model.load_state_dict(teacher.state_dict())
     #load_my_state_dict(model , teacher.state_dict())
     #load_my_state_dict(model , torch.load('checkpoints/imagenet/resnet18LSQ-2/model_best.pth.tar')['state_dict'])
-    #model.load_state_dict(torch.load('checkpoints/imagenet/resnet18LSQ/model_best.pth.tar')['state_dict'])
+    model.load_state_dict(torch.load('checkpoints/res183b_best.pth.tar')['state_dict'])
 
 
     cudnn.benchmark = True
