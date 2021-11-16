@@ -220,8 +220,8 @@ def main():
     if args.evaluate:
         print('\nEvaluation only')
         print("TEACHER ACC")
-        test_loss, test_acc = test(val_loader, teacher, criterion, start_epoch, use_cuda)
-        print(' Test Loss:  %.8f, Test Acc:  %.2f' % (test_loss, test_acc))
+        #test_loss, test_acc = test(val_loader, teacher, criterion, start_epoch, use_cuda)
+        #print(' Test Loss:  %.8f, Test Acc:  %.2f' % (test_loss, test_acc))
         print("STUDENT ACC")
         test_loss, test_acc = test(val_loader, model, criterion, start_epoch, use_cuda)
         print(' Test Loss:  %.8f, Test Acc:  %.2f' % (test_loss, test_acc))
