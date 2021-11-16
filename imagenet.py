@@ -179,7 +179,7 @@ def main():
     #else:
     model = torch.nn.DataParallel(model).cuda()
     teacher = torch.nn.DataParallel(teacher).cuda()
-    teacher.load_state_dict(torch.load('checkpoints/imagenet/resnet18-2/model_best.pth.tar')['state_dict'])
+    teacher.load_state_dict(torch.load('checkpoints/res183b_best.pth.tar')['state_dict'])
     #model.load_state_dict(teacher.state_dict())
     load_my_state_dict(model , teacher.state_dict())
     #load_my_state_dict(model , torch.load('checkpoints/imagenet/resnet18LSQ-2/model_best.pth.tar')['state_dict'])
