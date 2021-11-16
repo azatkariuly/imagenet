@@ -20,7 +20,7 @@ import torch.utils.data as data
 import torchvision.transforms as transforms
 import torchvision.datasets as datasets
 import torchvision.models as models
-import models.imagenet as customized_models
+#import models.imagenet as customized_models
 from torch.nn.parameter import Parameter
 
 from utils import Bar, Logger, AverageMeter, accuracy, mkdir_p, savefig
@@ -33,6 +33,7 @@ default_model_names = sorted(name for name in models.__dict__
     if name.islower() and not name.startswith("__")
     and callable(models.__dict__[name]))
 
+'''
 customized_models_names = sorted(name for name in customized_models.__dict__
     if name.islower() and not name.startswith("__")
     and callable(customized_models.__dict__[name]))
@@ -40,8 +41,8 @@ customized_models_names = sorted(name for name in customized_models.__dict__
 for name in customized_models.__dict__:
     if name.islower() and not name.startswith("__") and callable(customized_models.__dict__[name]):
         models.__dict__[name] = customized_models.__dict__[name]
-
-model_names = default_model_names + customized_models_names
+'''
+model_names = default_model_names #+ customized_models_names
 
 # Parse arguments
 parser = argparse.ArgumentParser(description='PyTorch ImageNet Training')
