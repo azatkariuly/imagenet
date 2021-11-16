@@ -223,6 +223,8 @@ def main():
         #test_loss, test_acc = test(val_loader, teacher, criterion, start_epoch, use_cuda)
         #print(' Test Loss:  %.8f, Test Acc:  %.2f' % (test_loss, test_acc))
         print("STUDENT ACC")
+        model.load_state_dict(torch.load('checkpoints/res183b_best.pth.tar')['state_dict'])
+
         test_loss, test_acc = test(val_loader, model, criterion, start_epoch, use_cuda)
         print(' Test Loss:  %.8f, Test Acc:  %.2f' % (test_loss, test_acc))
         '''
