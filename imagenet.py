@@ -183,7 +183,7 @@ def main():
     #model.load_state_dict(teacher.state_dict())
     #load_my_state_dict(model , teacher.state_dict())
     #load_my_state_dict(model , torch.load('checkpoints/imagenet/resnet18LSQ-2/model_best.pth.tar')['state_dict'])
-    model.load_state_dict(torch.load('checkpoints/res183b_best.pth.tar')['state_dict'], strict=False)
+    model.load_state_dict(torch.load('checkpoints/res183b_best.pth.tar')['state_dict'])
 
     checkpoint = torch.load('checkpoints/res183b_best.pth.tar')
     for key in checkpoint:
