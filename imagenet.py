@@ -185,7 +185,7 @@ def main():
     #load_my_state_dict(model , torch.load('checkpoints/imagenet/resnet18LSQ-2/model_best.pth.tar')['state_dict'])
     model.load_state_dict(torch.load('checkpoints/model_best.pth.tar')['state_dict'])
 
-    checkpoint = torch.load('checkpoints/res183b_best.pth.tar')
+    checkpoint = torch.load('checkpoints/model_best.pth.tar')
     for key in checkpoint:
         print(key)
     print('sdlfgknsdlkfmglksdf: ', checkpoint['best_acc1'])
