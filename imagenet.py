@@ -185,6 +185,9 @@ def main():
     #load_my_state_dict(model , torch.load('checkpoints/imagenet/resnet18LSQ-2/model_best.pth.tar')['state_dict'])
     model.load_state_dict(torch.load('checkpoints/res183b_best.pth.tar')['state_dict'], strict=False)
 
+    best_acc = torch.load('checkpoints/res183b_best.pth.tar')['best_acc']
+    print('sdlfgknsdlkfmglksdf: ', best_acc)
+
 
     cudnn.benchmark = True
     print('    Total params: %.2fM' % (sum(p.numel() for p in model.parameters())/1000000.0))
@@ -215,10 +218,6 @@ def main():
     if args.evaluate:
         print('\nEvaluation only')
         print("TEACHER ACC")
-
-        best_acc = checkpoint['best_acc']
-
-        print('sdlfgknsdlkfmglksdf: ', best_acc)
         test_loss, test_acc = test(val_loader, teacher, criterion, start_epoch, use_cuda)
         print(' Test Loss:  %.8f, Test Acc:  %.2f' % (test_loss, test_acc))
         print("STUDENT ACC")
