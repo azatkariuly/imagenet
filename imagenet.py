@@ -188,7 +188,7 @@ def main():
     checkpoint = torch.load('checkpoints/model_best.pth.tar')
     for key in checkpoint:
         print(key)
-    print('sdlfgknsdlkfmglksdf: ', checkpoint['best_acc1'])
+    print('sdlfgknsdlkfmglksdf: ', checkpoint['best_acc'])
 
 
     cudnn.benchmark = True
